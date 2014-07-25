@@ -1,0 +1,23 @@
+#N canvas 477 130 450 300 10;
+#X obj 30 26 inlet;
+#X text 92 19 arg 1 is the number of subdivisions the clock will give
+arg 2 is the resulting number of subdivisions you want;
+#X obj 89 103 f \$1;
+#X obj 120 103 f \$2;
+#X obj 89 126 /;
+#X obj 89 54 loadbang;
+#X obj 89 78 t b b;
+#X obj 30 159 /;
+#X obj 30 213 change;
+#X obj 30 240 outlet;
+#X obj 30 187 int;
+#X connect 0 0 7 0;
+#X connect 2 0 4 0;
+#X connect 3 0 4 1;
+#X connect 4 0 7 1;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 1 3 0;
+#X connect 7 0 10 0;
+#X connect 8 0 9 0;
+#X connect 10 0 8 0;
