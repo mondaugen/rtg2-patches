@@ -1,12 +1,12 @@
-#N canvas 188 49 838 421 10;
-#X obj 43 114 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 52 22 844 631 10;
+#X obj 45 191 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X floatatom 244 62 5 0 0 0 - 1-tempo-recv -;
-#X msg 259 101 tempo \$1;
-#X obj 259 126 s control-bus;
-#X text 243 44 Tempo (bpm);
-#X text 42 95 Clock (on/off);
-#X obj 42 249 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X floatatom 229 98 5 0 0 0 - 1-tempo-recv -;
+#X msg 229 119 tempo \$1;
+#X obj 229 144 s control-bus;
+#X text 228 80 Tempo (bpm);
+#X text 44 172 Clock (on/off);
+#X obj 44 326 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 123 165 450 300 8-beat-loop 0;
 #N canvas 369 400 296 143 bms 0;
@@ -43,8 +43,8 @@
 #X connect 9 0 6 0;
 #X connect 9 1 10 0;
 #X connect 10 0 3 0;
-#X restore 42 271 pd 8-beat-loop;
-#X obj 134 249 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 44 348 pd 8-beat-loop;
+#X obj 136 326 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 565 287 450 300 random-starting-place 0;
 #N canvas 369 400 296 143 bms 0;
@@ -83,11 +83,11 @@
 #X connect 9 0 8 0;
 #X connect 10 0 1 0;
 #X connect 11 0 1 1;
-#X restore 134 271 pd random-starting-place;
-#X obj 66 22 abstractions/tap-tempo 8;
-#X obj 66 0 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X restore 136 348 pd random-starting-place;
+#X obj 43 100 abstractions/tap-tempo 8;
+#X obj 43 78 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X obj 66 44 abstractions/ms2bpm;
+#X obj 43 122 abstractions/ms2bpm;
 #N canvas 181 22 1070 606 controls 0;
 #N canvas 424 76 700 474 play-rec-system 0;
 #X obj 84 185 abstractions/rec-2-buf blah 30 sound-in;
@@ -197,17 +197,17 @@
 #X connect 19 0 2 1;
 #X restore 429 450 pd audio-io;
 #X floatatom 101 18 5 0 0 0 - - -;
-#X floatatom 137 18 5 0 0 0 - - -;
+#X floatatom 138 18 5 0 0 0 - - -;
 #X text 99 1 Beats;
 #X text 135 1 Divisions;
 #X obj 82 18 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X text 3 19 Timed Record;
 #X obj 206 22 vsl 15 128 0 127 0 0 empty in-gain-slider empty 0 -9
-0 10 -262144 -1 -1 11000 1;
+0 10 -262144 -1 -1 10900 1;
 #X obj 206 161 - 109;
 #X obj 282 21 vsl 15 128 0 127 0 0 empty out-gain-slider empty 0 -9
-0 10 -262144 -1 -1 10800 1;
+0 10 -262144 -1 -1 10900 1;
 #X obj 282 160 - 109;
 #X obj 365 21 vsl 15 128 0 127 0 0 empty feedback-gain-slider empty
 0 -9 0 10 -262144 -1 -1 0 1;
@@ -243,22 +243,24 @@ set \$2;
 #X obj 82 56 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
 ;
 #X msg 82 90 \; pd dsp \$1;
-#X obj 477 9 loadbang;
-#X msg 473 35 1;
+#X msg 473 54 1;
 #X text 3 36 comment;
-#X obj 67 244 loadbang;
-#X msg 67 272 \; control-bus 1-poll-num-divs;
+#X msg 582 120 \; control-bus 1-poll-num-divs;
 #X obj 66 362 r control-bus;
 #X obj 66 385 route 1-num-divs;
 #X obj 26 474 *;
-#X obj 26 505 +;
+#X obj 200 513 +;
 #X obj 0 422 f 1;
-#X obj 26 552 abstractions/timed-record-divisions 1 24;
 #X floatatom 103 439 5 0 0 0 - - -;
 #X obj 32 177 t b b;
-#X connect 2 0 47 1;
-#X connect 3 0 46 1;
-#X connect 6 0 50 0;
+#X msg 476 86 0;
+#X obj 286 550 outlet;
+#X obj 549 4 inlet;
+#X obj 478 30 t b b b;
+#X obj 26 552 abstractions/timed-record-divisions 1 24;
+#X connect 2 0 45 1;
+#X connect 3 0 44 1;
+#X connect 6 0 47 0;
 #X connect 8 0 9 0;
 #X connect 9 0 21 0;
 #X connect 10 0 11 0;
@@ -281,22 +283,26 @@ set \$2;
 #X connect 34 0 33 0;
 #X connect 34 1 32 0;
 #X connect 36 0 37 0;
-#X connect 38 0 39 0;
-#X connect 39 0 2 0;
+#X connect 38 0 2 0;
 #X connect 41 0 42 0;
+#X connect 42 0 43 1;
+#X connect 42 0 46 0;
 #X connect 43 0 44 0;
-#X connect 44 0 45 1;
 #X connect 44 0 49 0;
-#X connect 45 0 46 0;
-#X connect 46 0 48 1;
-#X connect 47 0 45 0;
-#X connect 50 0 48 0;
-#X connect 50 1 47 0;
+#X connect 44 0 52 1;
+#X connect 45 0 43 0;
+#X connect 47 0 52 0;
+#X connect 47 1 45 0;
+#X connect 48 0 3 0;
+#X connect 50 0 51 0;
+#X connect 51 0 38 0;
+#X connect 51 1 48 0;
+#X connect 51 2 40 0;
 #X coords 0 -1 1 1 450 160 2 0 0;
-#X restore 357 -6 pd controls;
-#X obj 286 244 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 359 71 pd controls;
+#X obj 288 321 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X obj 370 248 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 372 325 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 565 287 450 300 same-starting-place 0;
 #N canvas 369 400 296 143 bms 0;
@@ -340,8 +346,8 @@ set \$2;
 #X connect 11 1 12 0;
 #X connect 12 0 6 0;
 #X connect 13 0 10 0;
-#X restore 370 270 pd same-starting-place;
-#X obj 517 248 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 372 347 pd same-starting-place;
+#X obj 519 325 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 565 287 450 300 same-starting-place-2 0;
 #N canvas 369 400 296 143 bms 0;
@@ -382,8 +388,8 @@ set \$2;
 #X connect 10 0 7 0;
 #X connect 11 0 12 0;
 #X connect 12 0 1 1;
-#X restore 517 270 pd same-starting-place-2;
-#X obj 671 247 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X restore 519 347 pd same-starting-place-2;
+#X obj 673 324 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #N canvas 565 287 450 300 same-starting-place-3 0;
 #N canvas 369 400 296 143 bms 0;
@@ -433,7 +439,7 @@ set \$2;
 #X connect 16 0 5 0;
 #X connect 16 1 5 0;
 #X connect 16 2 5 0;
-#X restore 671 269 pd same-starting-place-3;
+#X restore 673 346 pd same-starting-place-3;
 #N canvas 873 228 401 335 help 0;
 #X text 22 15 RECORDING LOOPER;
 #X text 20 28 Clock: This must be on for everything to work. The default
@@ -453,7 +459,7 @@ hear a clave playing on each beat.;
 8-beat-loop.;
 #X text 20 269 To have what is being played in the score be included
 with your next recording \, turn up "Feedback Gain".;
-#X restore 309 -3 pd help;
+#X restore 311 74 pd help;
 #N canvas 611 201 426 360 metronome 0;
 #X obj 146 2 table metro-clav 10;
 #X obj 146 42 soundfiler;
@@ -496,7 +502,7 @@ with your next recording \, turn up "Feedback Gain".;
 #X connect 17 0 14 1;
 #X connect 18 0 7 0;
 #X connect 19 0 2 0;
-#X restore 286 271 pd metronome;
+#X restore 288 348 pd metronome;
 #N canvas 838 122 465 557 help-score 0;
 #X text 16 14 SCORE: This is where you dictate what is played. The
 way you play what was last recorded is you send this message on the
@@ -529,44 +535,73 @@ and decay of 500;
 be played at the same time) \, can be increased easily.;
 #X connect 1 0 9 0;
 #X connect 11 0 10 0;
-#X restore 40 221 pd help-score;
-#X text 86 -2 Tap In;
-#X msg 44 314 \; control-bus rec-start;
-#X msg 44 347 \; control-bus rec-stop;
-#X obj 169 73 loadbang;
-#X msg 167 96 120;
-#X obj 43 152 abstractions/master-clock 1 24 120;
-#X obj 308 176 r control-bus;
-#X obj 308 200 print;
-#X msg 477 174 \; control-bus poll-tempo;
-#X obj 192 334 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X restore 42 298 pd help-score;
+#X text 63 76 Tap In;
+#X msg 46 391 \; control-bus rec-start;
+#X msg 46 424 \; control-bus rec-stop;
+#X msg 134 73 120;
+#X obj 171 250 r control-bus;
+#X obj 171 274 print;
+#X msg 479 285 \; control-bus poll-tempo;
+#X obj 194 411 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 459 354 scores/random-tempo-generator 1;
-#X obj 459 329 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 461 406 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X text 479 327 <-- toggle here;
-#X obj 191 358 abstractions/timed-record-divisions 192;
-#X obj 66 66 s 1-tempo-recv;
-#X text 43 293 Basic recording;
-#X floatatom 404 328 5 0 0 0 - - -;
-#X text 199 291 Record for specific number of divisions (or use interface
+#X text 481 404 <-- toggle here;
+#X obj 43 144 s 1-tempo-recv;
+#X text 45 370 Basic recording;
+#X floatatom 406 405 5 0 0 0 - - -;
+#X text 201 368 Record for specific number of divisions (or use interface
 above).;
-#X connect 0 0 29 0;
+#X obj 75 556 s control-bus;
+#X floatatom 359 235 5 0 0 0 - - -;
+#X msg 75 531 play 0 0 1 1200 10 100;
+#X floatatom 461 459 5 0 0 0 - - -;
+#X text 392 237 Number of divisions recorded for.;
+#X text 497 460 Current beat in score;
+#X floatatom 221 198 5 0 0 0 - - -;
+#N canvas 236 72 450 300 rtg3-startup 0;
+#X obj 26 16 loadbang;
+#X obj 34 67 t b b;
+#X obj 40 121 outlet;
+#X obj 95 117 outlet;
+#X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 1 0 29 2;
+#X connect 1 1 3 0;
+#X restore 132 42 pd rtg3-startup;
+#X obj 304 510 s control-bus;
+#X msg 291 476;
+#X obj 193 435 abstractions/timed-record-divisions 1 48;
+#X obj 530 540 r 1-beat-count;
+#X obj 627 540 r 1-div-count;
+#X obj 530 579 print beat-count;
+#X obj 643 582 print div-count;
+#X obj 461 431 scores/random-tempo-generator 1;
+#X obj 45 229 abstractions/master-clock 1 24 120;
+#X text 173 176 Tempo Scalar;
+#X connect 0 0 54 0;
+#X connect 1 0 2 0;
+#X connect 1 0 54 2;
 #X connect 2 0 3 0;
 #X connect 6 0 7 0;
 #X connect 8 0 9 0;
 #X connect 10 0 12 0;
 #X connect 11 0 10 0;
-#X connect 12 0 38 0;
+#X connect 12 0 34 0;
+#X connect 13 0 39 0;
 #X connect 14 0 22 0;
 #X connect 15 0 16 0;
 #X connect 17 0 18 0;
 #X connect 19 0 20 0;
-#X connect 27 0 28 0;
-#X connect 28 0 38 0;
-#X connect 30 0 31 0;
-#X connect 33 0 37 0;
-#X connect 35 0 34 0;
-#X connect 40 0 37 1;
+#X connect 27 0 34 0;
+#X connect 28 0 29 0;
+#X connect 31 0 48 0;
+#X connect 32 0 53 0;
+#X connect 36 0 48 1;
+#X connect 40 0 38 0;
+#X connect 44 0 54 3;
+#X connect 45 0 13 0;
+#X connect 45 1 27 0;
+#X connect 49 0 51 0;
+#X connect 50 0 52 0;
+#X connect 53 0 41 0;

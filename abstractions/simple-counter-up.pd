@@ -1,4 +1,4 @@
-#N canvas 0 22 450 300 10;
+#N canvas 0 22 593 290 10;
 #X obj 56 44 inlet;
 #X obj 62 248 outlet;
 #X obj 29 82 t b b;
@@ -7,6 +7,11 @@
 #X obj 151 77 sel \$2;
 #X obj 78 130 f \$1;
 #X obj 65 165 f \$1;
+#X obj 117 49 inlet;
+#X text 58 19 bang to count;
+#X text 162 49 bang to reset;
+#X text 223 13 first argument is count minimum \, second is one greater
+than the maximum;
 #X connect 0 0 2 0;
 #X connect 2 1 7 0;
 #X connect 3 0 4 0;
@@ -16,3 +21,4 @@
 #X connect 5 1 7 1;
 #X connect 6 0 7 1;
 #X connect 7 0 3 0;
+#X connect 8 0 6 0;
