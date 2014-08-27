@@ -1,4 +1,4 @@
-#N canvas 0 22 667 618 10;
+#N canvas 244 59 667 618 10;
 #X obj 13 5 inlet;
 #X obj 36 208 / 10000;
 #X obj 33 244 phasor~;
@@ -33,7 +33,7 @@
 #X obj 14 73 t f b;
 #X obj 36 98 samplerate~;
 #X obj 14 124 *;
-#X text 245 16 rate takes float meaning samples/sample-period \, set
+#X text 289 14 rate takes float meaning samples/sample-period \, set
 takes buffer-name and length \, start takes start point in samples
 \, start-ms in milliseconds;
 #X obj 208 80 t f b;
