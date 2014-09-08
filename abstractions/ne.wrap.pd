@@ -1,0 +1,10 @@
+#N canvas 487 292 1093 653 10;
+#X text 56 34 wrap input between 0 and value from inlet 2;
+#X obj 54 187 expr $f1 \; $f2 \; if ($f1 < 0 \, $f2 + fmod($f1 \, $f2)
+\, fmod($f1 \, $f2)) \;;
+#X obj 183 275 outlet;
+#X obj 48 90 inlet;
+#X obj 362 89 inlet;
+#X connect 1 2 2 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 1;

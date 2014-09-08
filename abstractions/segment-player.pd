@@ -1,0 +1,37 @@
+#N canvas 200 479 924 492 10;
+#X text 41 17 looks-up last played sample length and current tempo.
+divides the sample into the number of segments of length L (expressed
+in beat-divisions) and depending on mode (0) restricts incoming segment
+indices to that range or (1) wraps the segment indices into the range
+(ie. -1 becomes highest-segment-index - 1 \, -2 highest-segment-index
+- 2 etc.);
+#X obj 48 154 inlet;
+#X obj 410 156 inlet;
+#X text 410 129 tempo;
+#X obj 218 151 inlet;
+#X text 215 129 length of segment (divisions);
+#X text 51 126 segment number;
+#X obj 201 327 /;
+#X obj 211 289 * 60000;
+#X text 292 224 length of beat (in divisions);
+#X obj 214 253 / 1;
+#X obj 257 223 f \$1;
+#X obj 218 180 t f b;
+#X obj 170 369 f;
+#X text 212 364 length of segment in ms;
+#X obj 540 158 inlet;
+#X text 542 139 mode (default 0);
+#X obj 594 292 ne.wrap;
+#X floatatom 641 257 5 0 0 0 - - -;
+#X floatatom 589 329 5 0 0 0 - - -;
+#X obj 74 211;
+#X connect 2 0 7 1;
+#X connect 4 0 12 0;
+#X connect 7 0 13 1;
+#X connect 8 0 7 0;
+#X connect 10 0 8 0;
+#X connect 11 0 10 1;
+#X connect 12 0 10 0;
+#X connect 12 1 11 0;
+#X connect 17 0 19 0;
+#X connect 18 0 17 1;
